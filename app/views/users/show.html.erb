@@ -5,3 +5,4 @@
   <%= image_tag @user.image.url if @user.image.present? %>
 </p>
 <%= link_to "プロフィールを編集する", edit_user_path(@user.id) %>
+<%= link_to "お気に入り一覧", favorite_path(@user.id) %>
