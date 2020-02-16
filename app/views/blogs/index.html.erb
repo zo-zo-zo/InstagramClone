@@ -4,11 +4,13 @@
   <tr>
     <th>タイトル</th>
     <th>内容</th>
+    <th>投稿者</th>
   </tr>
 <% @blogs.each do |blog| %>
   <tr>
     <td><%= blog.title %></td>
     <td><%= blog.content %></td>
+    <td><%= blog.user.name%></td>
     <td><%= image_tag blog.picture.url if blog.picture.present? %></td>
     <td><%= link_to '詳細を確認する', blog_path(blog.id) %></td>
     <td><%= link_to "ブログを編集する", edit_blog_path(blog.id), data: { confirm: '本当に編集していいですか？' } %></td>
