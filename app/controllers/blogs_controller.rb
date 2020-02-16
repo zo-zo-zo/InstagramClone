@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update, :destroy]
-  before_action :is_logged_in, only: [:index, :show, :edit, :update]
+  before_action :set_blog, only: [:show, :edit, :update, :destroy ]
+  before_action :is_logged_in, only: [:index, :show, :edit, :update ]
 
   def index
     @blogs = Blog.all
@@ -21,6 +21,7 @@ class BlogsController < ApplicationController
       render :new
     else
       if @blog.save
+        CheckMailer.check_mail(@blog).deliver
         redirect_to blogs_path, notice: "ブログを作成しました！"
       else
         render :new
@@ -37,6 +38,7 @@ class BlogsController < ApplicationController
 
   def update
     if @blog.update(blog_params)
+      CheckMailer.check_mail(@blog).deliver
       redirect_to blogs_path, notice: "ブログを編集しました！"
     else
       render :edit
@@ -44,7 +46,7 @@ class BlogsController < ApplicationController
   end
 
   def destroy
-  @blog.destroy
+    @blog.destroy
   redirect_to blogs_path, notice:"ブログを削除しました！"
   end
 
