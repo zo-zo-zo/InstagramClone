@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :is_logged_in, only: [:index, :show, :edit, :update]
 
   def index
     @blogs = Blog.all
@@ -54,7 +55,7 @@ class BlogsController < ApplicationController
       redirect_to new_session_path
     end
   end
-   
+
   def blog_params
     params.require(:blog).permit(:title, :content, :picture, :picture_cache)
   end
