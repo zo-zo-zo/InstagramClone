@@ -9,15 +9,27 @@
       </ul>
     </div>
   <% end %>
+  <p class= center_tag>
   <%= form.label :name %>
   <%= form.text_field :name %>
+  </p>
+  <p class= center_tag>
   <%= form.label :email %>
   <%= form.email_field :email %>
+  </p>
+  <p class= center_tag>
   <%= form.label :password %>
   <%= form.password_field :password %>
+  </p>
+  <p class= center_tag>
   <%= form.label :password_confirmation %>
   <%= form.password_field :password_confirmation %>
+  </p>
+  <p class= center_tag>
   <%= form.label :image %>
   <%= form.file_field :image %>
+  </p>
+  <p class= center_tag>
   <%= form.submit %>
+  </p>
 <% end %>

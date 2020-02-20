@@ -1,22 +1,19 @@
 <h1>ブログ一覧</h1>
 <p><%= notice %></p>
+<%= link_to '新しくブログを投稿する', new_blog_path ,class:'btn btn-primary' %>
 <table>
-  <tr>
-    <th>タイトル</th>
-    <th>内容</th>
-    <th>投稿者</th>
-  </tr>
 <% @blogs.each do |blog| %>
-  <tr>
-    <td><%= blog.title %></td>
-    <td><%= blog.content %></td>
-    <td><%= blog.user.name%></td>
-    <td><%= image_tag blog.picture.url if blog.picture.present? %></td>
-    <td><%= link_to '詳細を確認する', blog_path(blog.id) %></td>
-    <td><%= link_to "ブログを編集する", edit_blog_path(blog.id), data: { confirm: '本当に編集していいですか？' } %></td>
-    <td><%= link_to 'ブログを削除する', blog_path(blog.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
-  </tr>
-<% end %>
-</table>
+    <div>タイトル</div>
+    <p><%= blog.title %></p>
+    <div>投稿者</div>
+    <p><%= blog.user.name%></p>
+    <div>内容</div>
+    <p><%= blog.content %></p>
 
-<%= link_to '新しくブログを投稿する', new_blog_path %>
+    <p><%= image_tag blog.picture.url if blog.picture.present? %></p>
+    <%= link_to '詳細', blog_path(blog.id),class:'btn btn-primary' %>
+    <%= link_to '編集', edit_blog_path(blog.id), data: { confirm: '本当に編集していいですか？' },class:'btn btn-primary' %>
+    <%= link_to '削除', blog_path(blog.id), method: :delete ,data: { confirm: '本当に削除していいですか？' },class:'btn btn-primary' %>
+    <p class='gap'></p>
+</table>
+<% end %>

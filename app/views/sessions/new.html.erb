@@ -1,8 +1,14 @@
 <h1>Log in</h1>
 <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+  <p class= center_tag>
   <%= f.label :email %>
   <%= f.email_field :email %>
+  </p>
+  <p class= center_tag>
   <%= f.label :password %>
   <%= f.password_field :password %>
+  </p>
+  <p class= center_tag>
   <%= f.submit "Log in" %>
+  </p>
 <% end %>

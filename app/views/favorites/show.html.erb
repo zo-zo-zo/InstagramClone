@@ -1,5 +1,6 @@
 <h1>お気に入り一覧</h1>
 
 <% @favorite.each do |favorite| %>
-  <%= image_tag favorite.blog.picture.url %>
+  <table class ='center_tag'><%= image_tag favorite.blog.picture.url %></table>
+  <p class ='gap'></p>
 <% end %>
