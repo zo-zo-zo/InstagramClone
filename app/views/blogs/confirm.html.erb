@@ -5,7 +5,7 @@
   <%= form.hidden_field :picture_cache %>
   <p>タイトル:<%= @blog.title %></p>
   <p>本文:<%= @blog.content %></p>
-  <p><%= image_tag @blog.picture.url %></p>
+  <p><%= image_tag @blog.picture.url if @blog.picture && @blog.picture.url %></p>
 
   <%= form.submit  "登録する" %>
   <%= form.submit "戻る", name: 'back' %>

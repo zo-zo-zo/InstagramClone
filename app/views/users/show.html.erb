@@ -2,7 +2,9 @@
 <table>
 <tr>
 <p class= center_tag>メールアドレス: <%= @user.email %></p>
+<% if current_user.id == @user.id %>
 <p class= center_tag><%= link_to "プロフィール編集", edit_user_path(@user.id) ,class:'btn btn-primary'%></p>
+<% end %>
 <p class= center_tag><%= link_to "お気に入り一覧", favorite_path(@user.id),class:'btn btn-primary' %></p>
 <p class= center_tag>
   <%= image_tag @user.image.url if @user.image.present? %>
