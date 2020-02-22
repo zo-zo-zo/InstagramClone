@@ -1,5 +1,6 @@
 @import "bootstrap";
-html{position: relative;
+html{
+  position: relative;
   min-height:100%;
 }
 header {
@@ -27,7 +28,6 @@ body{
   position: relative;
   text-align:  center;
 }
-
 .center_tag{
   padding: 25px;
   text-align:  center;
