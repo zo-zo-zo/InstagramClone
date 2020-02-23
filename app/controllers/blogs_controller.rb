@@ -1,6 +1,7 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy ]
   before_action :is_logged_in, only: [:new, :index, :show, :edit, :update ]
+  before_action :check_current_user, only: [:edit, :update]
 
   def index
     @blogs = Blog.all
@@ -65,5 +66,12 @@ class BlogsController < ApplicationController
 
   def set_blog
     @blog = Blog.find(params[:id])
+  end
+
+  def check_current_user
+    @current_user = User.find_by(id: session[:user_id])
+    if @current_user.id != params[:id].to_i
+      redirect_to blogs_path, notice:"編集権限がありません"
+    end
   end
 end

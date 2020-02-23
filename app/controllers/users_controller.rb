@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
   before_action :is_logged_in, only: [:show, :edit, :update]
+  before_action :check_current_user, only: [:edit, :update]
 
   def new
     @user = User.new
@@ -43,6 +44,13 @@ class UsersController < ApplicationController
     @current_user = User.find_by(id: session[:user_id])
     if @current_user.nil?
       redirect_to new_session_path
+    end
+  end
+
+  def check_current_user
+    @current_user = User.find_by(id: session[:user_id])
+    if @current_user.id != params[:id].to_i
+      redirect_to user_path(@user.id), notice:"編集権限がありません"
     end
   end
 
