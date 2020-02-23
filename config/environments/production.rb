@@ -20,8 +20,8 @@ Rails.application.configure do
   end
   config.active_record.dump_schema_after_migration = false
   config.action_mailer.default_url_options = { host: 'secret-atoll-46115.herokuapp.com' }
-  CheckMailer::Base.delivery_method = :smtp
-  CheckMailer::Base.smtp_settings = {
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
     user_name: ENV['SENDGRID_USERNAME'],
     password: ENV['SENDGRID_PASSWORD'],
     domain: "heroku.com",
